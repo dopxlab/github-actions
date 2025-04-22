@@ -57,12 +57,13 @@ jobs:
       DOCKER_IMAGE_PUSH_PREFIX: ${{ inputs.docker_image_push_prefix }}
       OCI_REG_HOST: ${{ inputs.oci_reg_host }}
       OCI_REG_USER: ${{ inputs.oci_reg_user }}
-      OCI_REG_PASSWORD: ${{ secrets.oci_reg_password }}
       GITOPS_REPO: ${{ inputs.gitops_repository }}
+      APP_CONFIGMAP: ${{ inputs.app_configmap }}
+      APP_SECRET: ${{ inputs.app_secret }}
+      APP_PVC: ${{ inputs.app_pvc }}
+
       GITOPS_PAT: ${{ secrets.gitops_pat }}
-      APP_CONFIGMAP: ${{ secrets.app_configmap }}
-      APP_SECRET: ${{ secrets.app_secret }}
-      APP_PVC: ${{ secrets.app_pvc }}
+      OCI_REG_PASSWORD: ${{ secrets.oci_reg_password }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
