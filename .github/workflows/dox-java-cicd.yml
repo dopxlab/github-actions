@@ -27,7 +27,19 @@ on:
       gitops_repository:
         description: 'GitOps Repository '
         type: string
-        default: 'github.com/dopxlab/gitops-argocd.git'         
+        default: 'github.com/dopxlab/gitops-argocd.git'    
+      app_configmap:
+        description: 'Config map ref in deploment'
+        type: string
+        default: ''    
+      app_secret:
+        description: 'Secret  ref in deploment'
+        type: string
+        default: ''    
+      app_pvc:
+        description: 'PVC binding with deploment'
+        type: string
+        default: ''            
     secrets:
       oci_reg_password:
         description: 'OCI Registry Password'
@@ -48,6 +60,9 @@ jobs:
       OCI_REG_PASSWORD: ${{ secrets.oci_reg_password }}
       GITOPS_REPO: ${{ inputs.gitops_repository }}
       GITOPS_PAT: ${{ secrets.gitops_pat }}
+      APP_CONFIGMAP: ${{ secrets.app_configmap }}
+      APP_SECRET: ${{ secrets.app_secret }}
+      APP_PVC: ${{ secrets.app_pvc }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
